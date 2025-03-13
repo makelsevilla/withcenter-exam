@@ -1,0 +1,11 @@
+# overrides configs in production docker-compose file
+# How to use:
+# command: docker compose -f docker-compose.yml -f docker-compose.dev.yml up 
+
+services:
+
+  backend:
+    # For dev configs, remove this when in production
+    volumes:
+      - ./backend:/app
+    command: dev
