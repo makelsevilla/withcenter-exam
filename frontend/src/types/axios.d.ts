@@ -3,7 +3,7 @@
 import 'axios';
 
 declare module 'axios' {   
-    export interface AxiosRequestConfig {
+    interface AxiosRequestConfig {
         withAuth?: boolean;   
     } 
 }

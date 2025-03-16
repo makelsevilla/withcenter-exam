@@ -1,7 +1,22 @@
-import "next-auth"
+import "next-auth";
+import "next-auth/jwt";
+
 
 declare module "next-auth" {
-    export interface Session {
-        accessToken: string
-    }
+  interface Session {
+    accessToken: string;
+  }
+
+  interface User {
+    accessToken: string;
+  }
+
+}
+
+declare module "next-auth/jwt" {
+  /** Returned by the `jwt` callback and `auth`, when using JWT sessions */
+  interface JWT {
+    id: string,
+    accessToken: string,
+  }
 }
