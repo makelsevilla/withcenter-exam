@@ -1,5 +1,9 @@
 # withcenter dev exam
 
+## Requirements
+
+Docker & Docker Compose
+
 ## How to run
 
 ### Production
