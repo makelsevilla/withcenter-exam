@@ -1,5 +1,4 @@
 import Axios from "axios";
-import { getSession, signOut } from "next-auth/react";
 
 const axios = Axios.create({
   baseURL: process.env.API_URL,
@@ -13,10 +12,10 @@ axios.interceptors.request.use(
   async (config) => {
     // Check if the request requires authentication
     if (config.withAuth) {
-      const session = await getSession(); // Get NextAuth session
+      const token = null; // implement getting token logic
 
-      if (session?.accessToken) {
-        config.headers.Authorization = `Bearer ${session.accessToken}`;
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
       }
     }
 
@@ -30,7 +29,8 @@ axios.interceptors.response.use(
   (response) => response, // Pass successful responses as is
   async (error) => {
     if (error.response?.status === 401) {
-      await signOut({ callbackUrl: "/login" }); // Sign out and redirect to login page
+      // clear cached token in localStorage 
+      // redirect user to login
     }
     return Promise.reject(error);
   }
